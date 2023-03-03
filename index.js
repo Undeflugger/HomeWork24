@@ -20,34 +20,8 @@
 // Напишіть програму, яка розраховує вартість та калорійність гамбургера.
 "use strict"
 const hamburgerComponents = {
-    SIZE_SMALL:{
-        price : 50,
-        calories: 20
-    },
-    SIZE_BIG:{
-        price : 100,
-        calories: 40
-    },
-    STUFFING_CHEESE:{
-        price : 10,
-        calories: 20
-    },
-    STUFFING_SALAD:{
-        price : 20,
-        calories: 5
-    },
-    STUFFING_POTATO:{
-        price : 15,
-        calories: 10
-    },
-    TOPPING_SAUCE:{
-        price : 15,
-        calories: 0
-    },
-    TOPPING_MAYO:{
-        price : 20,
-        calories: 5
-    }
+
+
 }
 
 class Hamburger {
@@ -56,6 +30,35 @@ class Hamburger {
     constructor(size, stuffing){
         this.price += size.price + stuffing.price;
         this.calories += size.calories + stuffing.calories;
+    }
+
+    static SIZE_SMALL = {
+        price : 50,
+        calories: 20
+    }
+    static SIZE_BIG = {
+        price : 100,
+        calories: 40
+    }
+    static STUFFING_CHEESE = {
+        price : 10,
+        calories: 20
+    }
+    static STUFFING_SALAD = {
+        price : 20,
+        calories: 5
+    }
+    static STUFFING_POTATO = {
+        price : 15,
+        calories: 10
+    }
+    static TOPPING_SAUCE = {
+        price : 15,
+        calories: 0
+    }
+    static TOPPING_MAYO = {
+        price : 20,
+        calories: 5
     }
 
     addTopping(topping){
@@ -72,10 +75,10 @@ class Hamburger {
 }
 
 // маленький гамбургер з начинкою з сиру
-const hamburger = new Hamburger(hamburgerComponents.SIZE_SMALL, hamburgerComponents.STUFFING_CHEESE);
+const hamburger = new Hamburger(Hamburger.SIZE_SMALL, Hamburger.STUFFING_CHEESE);
 
 // добавка з майонезу
-hamburger.addTopping(hamburgerComponents.TOPPING_MAYO);
+hamburger.addTopping(Hamburger.TOPPING_MAYO);
 
 // запитаємо скільки там калорій
 console.log(`Calories:  ${hamburger.calculate ()}`);
@@ -84,7 +87,7 @@ console.log(`Calories:  ${hamburger.calculate ()}`);
 console.log(`Price: ${hamburger.calculatePrice()}`);
 
 // я тут передумав і вирішив додати ще приправу
-hamburger.addTopping(hamburgerComponents.TOPPING_SAUCE);
+hamburger.addTopping(Hamburger.TOPPING_SAUCE);
 
 // А скільки тепер коштує?
 console.log(`Price with sauce: ${hamburger.calculatePrice()}`);
